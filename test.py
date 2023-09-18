@@ -28,19 +28,31 @@ Amount at signing of this Agreement: [Amount]
 This Agreement outlines the terms and conditions of the partnership between the Service Provider and the Client for the provision of the Services outlined above.
 """
 def fillin(template):
-# Extract placeholders from the template
+    # Extract placeholders from the template
     placeholders = extract_placeholders(template)
 
     # Initialize an empty dictionary to store user responses
     user_responses = {}
 
+    # Initialize a set to keep track of placeholders that have been asked
+    asked_placeholders = set()
+
     # Chatbot interaction to fill the form based on extracted placeholders
     print("Welcome to the Form-Filling Chatbot!")
 
     for placeholder in placeholders:
+        # Check if this placeholder has already been asked
+        if placeholder in asked_placeholders:
+            # If yes, use the previous response
+            user_responses[placeholder] = user_responses.get(placeholder, "")
+            continue
+
         # Determine a suitable question based on the placeholder
         question = f"Please enter the details for '{placeholder}':"
         user_responses[placeholder] = get_user_input(question)
+
+        # Mark this placeholder as asked
+        asked_placeholders.add(placeholder)
 
     # Fill in the template with user responses
     filled_template = template
@@ -51,3 +63,4 @@ def fillin(template):
     print("\nThank you! Here is the filled template:\n\n")
     print(filled_template)
     return filled_template
+

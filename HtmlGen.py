@@ -23,8 +23,8 @@ def get_vectorstore():
     # embeddings = HuggingFaceInstructEmbeddings(model_name='hkunlp/instructor-xl')
     # embeddings = OpenAIEmbeddings(deployment=os.getenv("OPENAI_DEPLOYMENT_NAME"),chunk_size=1)
     # vectorstore = FAISS.from_texts(texts=text_chunks, embedding = embeddings)
-    vectorstore=FAISS.load_local('F:\Legal Assistant\main\Knowledge\Vectorstore',embeddings)
-    print('Vector store received for Laws and Regulations')
+    vectorstore=FAISS.load_local('F:\Legal Assistant\main\Htmlgen\Vectorstore',embeddings)
+    print('Vector store for Html files received')
     # vectorstore.save_local('vectorstore')
     # vs = np.array(vectorstore)
     # np.save('savefile.npy',vs)
@@ -38,7 +38,7 @@ def get_conversation_chain(vectorstore):
         retriever = vectorstore.as_retriever(),
         memory=memory
     )
-    print('Conversation chain created for Advisor')
+    print('Conversation chain created for Html generation')
     return conversation_chain
     
 def handle_userinput(user_question):
