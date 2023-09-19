@@ -36,7 +36,7 @@ def fillin(template):
 
     # Initialize a set to keep track of placeholders that have been asked
     asked_placeholders = set()
-
+    
     # Chatbot interaction to fill the form based on extracted placeholders
     print("Welcome to the Form-Filling Chatbot!")
 
