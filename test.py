@@ -1,4 +1,5 @@
 import re
+# import streamlit as st
 
 # Define a function to extract placeholders from the template
 def extract_placeholders(template):
@@ -30,7 +31,7 @@ This Agreement outlines the terms and conditions of the partnership between the 
 def fillin(template):
     # Extract placeholders from the template
     placeholders = extract_placeholders(template)
-
+    print(placeholders)
     # Initialize an empty dictionary to store user responses
     user_responses = {}
 
@@ -53,7 +54,7 @@ def fillin(template):
 
         # Mark this placeholder as asked
         asked_placeholders.add(placeholder)
-
+    print(user_responses)
     # Fill in the template with user responses
     filled_template = template
     for placeholder, response in user_responses.items():

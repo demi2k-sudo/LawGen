@@ -60,15 +60,17 @@ def main():
             print('\n\n'+response['answer']+'\n\n')
             document = response['answer']
 
-            response = st.session_state.conversation1({'question':f'Find the laws related to the below details\n Document : {document}\n User query: {query}'})
+            response = st.session_state.conversation1({'question':f'Find the laws or acts related to the below details\n Document : {document}\n User query: {query}'})
             laws = response['answer']
             print(laws)
             prompt = f'''
-            Give a , Very long template(Details to be filled before taking print enclosed by squared brackets) for the {document} 
-            in simple words that a layman can understand and detailed, without any disclaimers and also consider that the user has said ' {query}' 
-            Include these Supporting laws : {laws}
-            Rules: Use a single type of place holder name for a single entity
-            Leave a blank space for signatures
+            Give a , Very long template for the '{document}' and it should be very elaborate and explained so that a layman could understand 
+            considering' {query}' 
+            also include these laws {laws}
+            use good understandable placeholders enclosed with square brackets for every information that has to be filled before taking print
+            leave empty space for signatures
+            Dont give any disclaimers
+            Make it very elaborate as if you are explaining to a illiterates
             '''
 
             st.session_state.conversation2 = TemplateEngine.get()
@@ -80,9 +82,10 @@ def main():
 
             st.session_state.conversation3 = HtmlGen.get()
             prompt2 = f'''
-            I want you to convert document as it is into a html enclosing the appropriate field with appropriate tags based on your knowledge.
-            I want the first heading to be aligned centre and all the headings to be bold and all the font must be Times new roman and formally spaced
-            here is the document
+            I want you to convert document into a html enclosing the appropriate field with appropriate tags based on your knowledge of how legal documents should look.
+            I want the first heading to be aligned centre and all the headings to be bold and all the font must be Times New roman and the font must be clear 
+            The alignment should look formal for a legal document and use seperate div classes if needed to align 
+            here is the content of the document document
             {result}
             '''
             print(prompt2)
