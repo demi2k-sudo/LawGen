@@ -60,7 +60,7 @@ def main():
         templates.Develop()
         htmls.Develop()
     query = st.text_input('Explain elaborately what do you need to document legally: ')
-
+    col1,col2 = st.columns(2)
     if query:
         if st.session_state.advisor_response is None:
             with st.spinner('Processing Advisor...'):
@@ -88,7 +88,8 @@ def main():
             response = st.session_state.conversation2({'question':prompt})
             template = response['answer']
             st.session_state.template = template
-            st.write(template)
+            with col1:
+                st.write(template)
 
     # Check if template is available
         if st.session_state.template:
@@ -96,14 +97,15 @@ def main():
             filled_template = st.session_state.template
             st.session_state.k = 1
             
-            with st.form(key='template_form'):
-                st.session_state.dic={}
-                for placeholder in placeholders:
-                    user_input = st.text_input(f"Enter value for '{placeholder}':", key=f"{placeholder}_input{st.session_state.k}")
-                    st.session_state.k+=1
-                    # filled_template = filled_template.replace(f"[{placeholder}]", user_input)
-                    st.session_state.dic[placeholder]=user_input
-                st.form_submit_button("Generate PDF")
+            with col2:
+                with st.form(key='template_form'):
+                    st.session_state.dic={}
+                    for placeholder in placeholders:
+                        user_input = st.text_input(f"Enter value for '{placeholder}':", key=f"{placeholder}_input{st.session_state.k}")
+                        st.session_state.k+=1
+                        # filled_template = filled_template.replace(f"[{placeholder}]", user_input)
+                        st.session_state.dic[placeholder]=user_input
+                    st.form_submit_button("Generate PDF")
         if st.session_state.dic:
             filled_template = st.session_state.template
             for placeholder, response in st.session_state.dic.items():
