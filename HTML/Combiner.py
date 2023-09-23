@@ -1,7 +1,7 @@
 import os
 
 # Define the folder path where your HTML files are located
-folder_path = 'F:\Legal Assistant\main\HTML'
+folder_path = 'HTML'
 
 # Create an output text file to store the combined content
 output_file_path = 'combined_html.txt'

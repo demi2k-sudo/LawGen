@@ -23,7 +23,7 @@ def get_vectorstore():
     # embeddings = HuggingFaceInstructEmbeddings(model_name='hkunlp/instructor-xl')
     # embeddings = OpenAIEmbeddings(deployment=os.getenv("OPENAI_DEPLOYMENT_NAME"),chunk_size=1)
     # vectorstore = FAISS.from_texts(texts=text_chunks, embedding = embeddings)
-    vectorstore=FAISS.load_local('F:\Legal Assistant\main\Templates\Vectorstore',embeddings)
+    vectorstore=FAISS.load_local('Templates\Vectorstore',embeddings)
     print('Vector store for Templates received')
     # vectorstore.save_local('vectorstore')
     # vs = np.array(vectorstore)

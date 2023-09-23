@@ -18,7 +18,7 @@ def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
         print(f'Reading {pdf}')
-        pdf_reader = PdfReader(f'F:\Legal Assistant\main\Templates\data\{pdf}')
+        pdf_reader = PdfReader(f'Templates\data\{pdf}')
         for page in pdf_reader.pages:
             text+=page.extract_text()
     return text
@@ -45,7 +45,7 @@ def make_vectorstore(text_chunks):
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding = embeddings)
     # vectorstore=FAISS.load_local('vectorstore',embeddings)
     print('Vector store received')
-    vectorstore.save_local('F:\Legal Assistant\main\Htmlgen\Vectorstore')
+    vectorstore.save_local('Htmlgen\Vectorstore')
     # vs = np.array(vectorstore)
     # np.save('savefile.npy',vs)
     return vectorstore
@@ -55,7 +55,7 @@ def make_vectorstore(text_chunks):
 
             
 def Develop():
-    if len(os.listdir('F:\Legal Assistant\main\Htmlgen\Vectorstore'))<1:
+    if len(os.listdir('Htmlgen\Vectorstore'))<1:
         load_dotenv()
                 
         raw_text = html.data
