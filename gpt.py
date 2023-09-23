@@ -37,7 +37,18 @@ def find_placeholders(template):
 # Streamlit app
 def main():
     st.title('Legal Documentation Assistant')
-
+    page_bg_img = """
+    <style>
+    [data-testid="stAppViewContainer"]{
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/notjayanth.appspot.com/o/unsplash-img.jpg?alt=media&token=80212a15-3d47-4596-ad6c-b28c11e5a5ff");
+        background-size: cover;
+    }
+    [data-testid="stHeader"]{
+        background-color: rgba(0,0,0,0);
+    }
+    </style>
+    """
+    st.markdown(page_bg_img,unsafe_allow_html=True)
     if 'conversation1' not in st.session_state:
         st.session_state.conversation1 = None
     if 'conversation2' not in st.session_state:
@@ -78,7 +89,7 @@ def main():
             prompt = f'''
             Give a very long template (details to be filled before taking print enclosed by squared brackets) for the {document} 
             in simple words that a layman can understand and detailed, without any disclaimers, and also consider that the user has said '{query}' 
-            Rules: Use a single type of placeholder name for a single entity
+            Rules: Use a unique names for placeholder names like address 1,address 2. No two placeholders must be containing same names
             Leave a blank space for signatures
             you dont have to provide disclaimers in the bottom
             {laws}
