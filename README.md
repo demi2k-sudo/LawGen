@@ -1,5 +1,9 @@
 # Legal Documentation Assistant
 
+Demo - 1 : https://drive.google.com/file/d/1K8KQl9LV2TSjW2_hioFujagFmuPQEvh3/view?usp=sharing
+Demo - 2 : https://drive.google.com/file/d/1cIdk7ZBZfXh3ZLznmRMBgXJhicIYgrEF/view?usp=sharing
+
+
 Legal documentation can be a complicated and time-consuming process, especially for individuals and small businesses who may not have access to legal resources. 
 In addition, the language and jargon used in legal documents can be difficult for non-lawyers to understand, which can lead to errors and misunderstandings. 
 So I managed to bring up a solution that involves using LLMs that both find the appropriate document needed to address the issue and also generate a 
